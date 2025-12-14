@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme inline {
+  --breakpoint-3xl: 1920px;
+  --font-display: "Poppins", sans-serif;
+
+  /* Core colors */
+  --color-background-base: var(--background-base);
+  --color-background-screen: var(--background-screen);
+  --color-background: var(--background);
+
+  --color-primary: var(--primary);
+  --color-hot: var(--hot);
+  --color-cold: var(--cold);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-accent: var(--text-accent);
+
+  /* Neutrals */
+  --color-gray-cold: var(--gray-cold);
+  --color-gray-hot: var(--gray-hot);
+  --color-gray-too-cold: var(--gray-too-cold);
+
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+}
+
+/* =========================
+   LIGHT THEME (ANDERSON)
+   ========================= */
+:root {
+  --background-base: #ffffff;
+  --background-screen: #f7f7f7;
+  --background: #ffffff;
+
+  /* BRAND COLORS */
+  --primary: #f5c400;     /* Anderson Yellow */
+  --hot: #e10600;         /* Anderson Red */
+  --cold: #1f2937;        /* Dark neutral (headers/icons) */
+
+  /* TEXT */
+  --text-primary: #1c1c1c;
+  --text-secondary: #555555;
+  --text-accent: #ffffff;
+
+  /* NEUTRALS */
+  --gray-cold: #6b7280;
+  --gray-hot: #e5e7eb;
+  --gray-too-cold: #9ca3af;
+
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+}
+
+/* =========================
+   DARK THEME
+   ========================= */
+[data-theme="dark"] {
+  --background-base: #121212;
+  --background-screen: #181818;
+  --background: #0f0f0f;
+
+  --primary: #ffd500;
+  --hot: #ff2a2a;
+  --cold: #f9fafb;
+
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-accent: #121212;
+
+  --gray-cold: #374151;
+  --gray-hot: #4b5563;
+  --gray-too-cold: #d1d5db;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-display);
+  }
+
+  body {
+    background-color: var(--color-background-screen);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+  }
+
+  /* Layout */
+  .layout {
+    @apply xl:max-w-5xl lg:max-w-3xl md:max-w-2xl max-w-xl 2xl:max-w-7xl mx-auto px-4;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--color-cold);
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-cold);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  p {
+    @apply text-lg;
+    color: var(--color-text-secondary);
+  }
+
+  .text-secondary {
+    color: var(--color-text-secondary);
+  }
+
+  /* Buttons */
+  button {
+    @apply cursor-pointer px-4 py-2 font-semibold rounded-lg transition-all;
+  }
+
+  .primary-button {
+    background-color: var(--color-primary);
+    color: #000;
+  }
+
+  .primary-button:hover {
+    filter: brightness(0.95);
+  }
+
+  .danger-button {
+    background-color: var(--color-hot);
+    color: #fff;
+  }
+
+  .danger-button:hover {
+    filter: brightness(1.1);
+  }
+
+  .outline-button {
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+  }
+
+  .outline-button:hover {
+    background-color: var(--color-primary);
+    color: #000;
+  }
+
+  /* Cards / Sections */
+  .card {
+    background-color: var(--color-background-base);
+    border: 1px solid var(--color-gray-hot);
+    @apply rounded-xl shadow-sm p-6;
+  }
+}
