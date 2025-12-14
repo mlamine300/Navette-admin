@@ -37,7 +37,7 @@ const SideBar = () => {
             : "relative  mt-10 hidden md:flex flex-col w-72 border-r gap-10 border-gray-hot "
         }`}
       >
-        <div className="flex  flex-col items-center w-72 gap-1 mt-8">
+        <div className="flex  flex-col items-center w-72 gap-1 mt-10">
            
             <p
               style={{
