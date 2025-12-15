@@ -13,7 +13,7 @@
   --color-primary: var(--primary);
   --color-hot: var(--hot);
   --color-cold: var(--cold);
-
+  --color-destructive:var(--destructive);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-accent: var(--text-accent);
@@ -48,6 +48,7 @@
   --gray-cold: #6b7280;
   --gray-hot: #e5e7eb;
   --gray-too-cold: #9ca3af;
+  --destructive:#ff1216;
 
   --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
 }
@@ -63,6 +64,7 @@
   --primary: #ffd500;
   --hot: #ff2a2a;
   --cold: #f9fafb;
+  --destructive:#aa1216;
 
   --text-primary: #f3f4f6;
   --text-secondary: #9ca3af;

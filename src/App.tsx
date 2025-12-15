@@ -10,6 +10,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import StationPage from './pages/station/StationPage'
+import StationDetailsPage from './pages/station/StationDetailsPage'
 function App() {
  const queryClient = new QueryClient()
 
@@ -24,8 +25,10 @@ function App() {
 <Route element={<PrivateRoute allowedRoles={["authenticated","standard","supervisor", "admin"]} />}>
        <Route path="/" element={<Dashboard />} />
         <Route path="/station/list" element={<StationPage />} /> 
-         <Route path="*" element={<NotFound />} /> 
+           <Route path="/station/:id" element={<StationDetailsPage />} /> 
+       
        </Route>
+         <Route path="*" element={<NotFound />} /> 
        {/* <Route element={<PrivateRoute allowedRoles={[ "admin"]} />}>
          <Route path="/forms/list" element={<FormsPages />} />
          <Route path="/forms/:id" element={<AddFormPage />} />
