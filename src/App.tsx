@@ -11,6 +11,9 @@ import {
 } from '@tanstack/react-query'
 import StationPage from './pages/station/StationPage'
 import StationDetailsPage from './pages/station/StationDetailsPage'
+import UserPage from './pages/user/UserPage'
+import UserAddEditPage from './pages/user/UserAddEditPage'
+
 function App() {
  const queryClient = new QueryClient()
 
@@ -21,12 +24,15 @@ function App() {
 
     <Routes>
         <Route path="/login" element={<Login />} />
-  
-<Route element={<PrivateRoute allowedRoles={["authenticated","standard","supervisor", "admin"]} />}>
-       <Route path="/" element={<Dashboard />} />
+  {/* <Route element={<PrivateRoute allowedRoles={["authenticated","admin","standard","supervisor"]}/>} >
+ 
+  </Route> */}
+<Route element={<PrivateRoute allowedRoles={[ "authenticated","admin"]} />}>
+      <Route path="/" element={<Dashboard />} />
         <Route path="/station/list" element={<StationPage />} /> 
            <Route path="/station/:id" element={<StationDetailsPage />} /> 
-       
+       <Route path="/user/list" element={<UserPage />} /> 
+           <Route path="/user/:id" element={<UserAddEditPage />} /> 
        </Route>
          <Route path="*" element={<NotFound />} /> 
        {/* <Route element={<PrivateRoute allowedRoles={[ "admin"]} />}>
