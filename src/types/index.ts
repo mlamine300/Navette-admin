@@ -6,14 +6,25 @@ export interface User {
   token?: string;
 }
 export const AgentSchema=z.object({
-   id:z.uuid().optional(),
-  name:z.string().min(3,"nom de station trop court").max(50,"nom de station trop long"),
-  email:z.string().min(3,"email de station trop court").max(30,"email de station trop long"),
-   role:z.enum(["admin","agent","driver"]).optional(),
-  station :z.string().min(9,"incorrect num de telephone").max(20,"phone de station trop long"),
+  
+  name:z.string().min(3,"nom de agent trop court").max(50,"nom de agent trop long"),
+  email:z.string().min(3,"email de agent trop court").max(30,"email de agent trop long"),
+  password:z.string().min(3,"email de agent trop court").max(30,"email de agent trop long"),
+  rePassword:z.string().min(3,"email de agent trop court").max(30,"email de agent trop long"),
+  role:z.enum(["admin","agent","driver"]).optional(),
+  station :z.string(),
   activeStatus:z.boolean().default(true)
-})
-export type Agent=z.infer<typeof AgentSchema>;
+});
+export interface Agent{
+  name:string;
+  id?:string;
+  email:string;
+  role?:"agent"|"admin"|"driver";
+  station:{id:string,name:string};
+  activeStatus?:boolean;
+
+}
+//export type Agent=z.infer<typeof AgentSchema>;
 // export interface Station {
 //   id?: number;
 //   name: string;

@@ -44,14 +44,17 @@ export function DataTable<TData, TValue>({
       sorting,
     },
   });
+  
 
   return (
-    <div className="overflow-hidden rounded-md border flex items-center justify-center w-full  border-gray-hot">
-      <Table className="bg-background-base border border-gray-hot">
+    <div className=" rounded-md border flex items-center justify-center w-full  border-gray-hot">
+      <Table className="overflow-hidden g-background-base border border-gray-hot">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow className="border border-gray-hot bg-gray-hot/50 text-primary" key={headerGroup.id}>
+            <TableRow className="border border-gray-hot text-primary" key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
+
+                 
                 return (
                   <TableHead className="text-xs lg:text-sm" key={header.id}>
                     {header.isPlaceholder

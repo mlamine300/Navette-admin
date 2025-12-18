@@ -114,11 +114,14 @@ const FilterTableDiv = ({className,stations}:{className?:string,stations?:Statio
                     Type
                   </p>
                  
-                    <SelectItem className="cursor-pointer hover:bg-gray-hot" key={"supervisor"} value={"supervisor"}>
-                      Supervisor
+                    <SelectItem className="cursor-pointer hover:bg-gray-hot" key={"admin"} value={"admin"}>
+                      Admin
                     </SelectItem>
-                    <SelectItem className="cursor-pointer hover:bg-gray-hot" key={"standard"} value={"standard"}>
-                      Standard
+                    <SelectItem className="cursor-pointer hover:bg-gray-hot" key={"agent"} value={"user"}>
+                      Agent
+                    </SelectItem>
+                    <SelectItem className="cursor-pointer hover:bg-gray-hot" key={"driver"} value={"driver"}>
+                      Navette
                     </SelectItem>
                   
                 </SelectContent>

@@ -2,7 +2,7 @@ import { useTheme } from "next-themes";
 import { HiOutlineSun, HiMoon } from "react-icons/hi2";
 const Header = () => {
   const { theme, setTheme } = useTheme();
-  const name=import.meta.env.VITE_APP_NAME||"Open Tickets";
+  const name=import.meta.env.VITE_APP_NAME||"Navette App";
   return (
     <header className="fixed top-0 pt-5  w-full  flex items-center z-10 border-b border-gray-hot px-10 py-2  bg-background-base">
       <h4>{name} </h4>

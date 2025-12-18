@@ -12,7 +12,8 @@ import type { Agent } from "@/types";
 
 
 export const columns:()=> ColumnDef<Agent>[] =()=> [
-  {accessorKey:"createdAt",
+  {
+    accessorKey:"createdAt",
    header: ({ column }) => {
       return (
         <div
@@ -49,13 +50,13 @@ export const columns:()=> ColumnDef<Agent>[] =()=> [
      }
   },
   {
-    accessorKey: "organisation",
-    header: "Organisation",
+    accessorKey: "station",
+    header: "Station",
      cell: ({ row }) => {
-       const organisation=row.original.station;
-   
+       const station=row.original.station.name;
+ 
       return <div className="flex flex-col gap-1 items-start ">
-        <p className="font-semibold text-xs">{organisation} </p>
+        <p className="font-semibold text-xs">{station} </p>
         
       </div>
      }
@@ -104,7 +105,7 @@ export const columns:()=> ColumnDef<Agent>[] =()=> [
         
        
       
-      return <Link className="underline italix text-xs hover:text-amber-300 flex items-center justify-around"   to={`/users/${id}`}>
+      return <Link className="underline italix text-xs hover:text-amber-300 flex items-center justify-around"   to={`/user/${id}`}>
         
         <Pen size={20}/>
         
