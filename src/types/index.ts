@@ -9,8 +9,8 @@ export const AgentSchema=z.object({
   
   name:z.string().min(3,"nom de agent trop court").max(50,"nom de agent trop long"),
   email:z.string().min(3,"email de agent trop court").max(30,"email de agent trop long"),
-  password:z.string().min(3,"email de agent trop court").max(30,"email de agent trop long"),
-  rePassword:z.string().min(3,"email de agent trop court").max(30,"email de agent trop long"),
+  password:z.string().min(8,"email de agent trop court").max(30,"email de agent trop long").optional(),
+  rePassword:z.string().min(8,"email de agent trop court").max(30,"email de agent trop long").optional(),
   role:z.enum(["admin","agent","driver"]).optional(),
   station :z.string(),
   activeStatus:z.boolean().default(true)
