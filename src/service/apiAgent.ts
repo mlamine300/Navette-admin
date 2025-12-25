@@ -5,58 +5,7 @@ import supabase, { supabaseAdmin } from "./supabase";
 import type z from "zod";
 import toast from "react-hot-toast";
 
-// export const getAgentsAction:()=>Promise<Agent[]> = async()=> {
-//     const { data, error } = await supabase.from("agent").select("id,station, user(name,email,role)");
-    
-    
-//   if (error) {
-//     console.log("agent could not be loaded");
-    
-//     return [];
-//   }
-//   const users=data.map(d=>{
-//     return {id:d.id,station:d.station,
-//     name:d.user.at(0)?.name,
-//     email:d.user.at(0)?.email,
-//     role:d.user.at(0)?.role
 
-//   }
-//   })
-//   return users as Agent[];
-// }
-
-// export const getAgentActionWithFilter:(search:string,station?:string,role?:string)=>Promise<Agent[]> = async(search,station,role)=> {
-//     let query = supabase.from("agent").select("id,station (name), user(name,email,role)");//
-//     if (search.trim()) {
-//         console.log(search)
-//       query = query.or(`user.name.cs.{${search}} , user.email.cs.{${search}}`) ;
-//     } 
-//     if(station?.trim()){
-//         console.log(station)
-//         query=query.eq("station",station)
-//     }
-//     if(role?.trim()){
-//         console.log(role)
-//        query=query.eq("user.role",role) 
-//     }
-//     const { data, error } = await query;
-    
-    
-//   if (error) {
-//     console.log("agent could not be loaded");
-
-//     return [];
-//   }
-//   const users=data.map(d=>{
-//     return {id:d.id,station:d.station,
-//     name:d.user.at(0)?.name,
-//     email:d.user.at(0)?.email,
-//     role:d.user.at(0)?.role
-
-//   }
-//   })
-//   return users as Agent[];
-// }
 const PAGE=1;
 const MAX_PER_PAGE=10
 export const getAgentsAction = async (): Promise<Agent[]> => {
@@ -258,7 +207,7 @@ export const createAgentAction:({name,email,password,rePassword,role,station}:z.
     
 }
 
-export const deleteStationAction=async(id:string)=>{
+export const deleteAgentAction=async(id:string)=>{
   // const {count,error}=await supabase.from("itinerary").select('*', { count: 'exact', head: true }).eq("id",id);
   // if(count&&count>0){
   //   throw new Error("Impossible de supprimer la station car elle est utiliser dans un itinéraire")

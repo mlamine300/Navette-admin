@@ -13,6 +13,10 @@ import StationPage from './pages/station/StationPage'
 import StationDetailsPage from './pages/station/StationDetailsPage'
 import UserPage from './pages/user/UserPage'
 import UserAddEditPage from './pages/user/UserAddEditPage'
+import DriverList from './pages/driver/DriverList'
+import DriverAddEdit from './pages/driver/DriverAddEdit'
+import RouteList from './pages/route/RouteList'
+import RouteAddEdit from './pages/route/RouteAddEdit'
 
 function App() {
  const queryClient = new QueryClient()
@@ -33,6 +37,10 @@ function App() {
            <Route path="/station/:id" element={<StationDetailsPage />} /> 
        <Route path="/user/list" element={<UserPage />} /> 
            <Route path="/user/:id" element={<UserAddEditPage />} /> 
+            <Route path="/driver/list" element={<DriverList />} /> 
+           <Route path="/driver/:id" element={<DriverAddEdit />} /> 
+              <Route path="/routes/list" element={<RouteList />} /> 
+           <Route path="/routes/:id" element={<RouteAddEdit />} /> 
        </Route>
          <Route path="*" element={<NotFound />} /> 
        {/* <Route element={<PrivateRoute allowedRoles={[ "admin"]} />}>
