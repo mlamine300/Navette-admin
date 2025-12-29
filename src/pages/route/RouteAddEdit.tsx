@@ -1,7 +1,9 @@
 import Spinner from "@/components/main/Spinner";
+import TableOfRoutes from "@/components/route/TableOfRoutes";
+import Button from "@/components/ui/Button";
 import { Card } from "@/components/ui/card";
 import Input from "@/components/ui/Input"
-import SelectMultiple from "@/components/ui/SelectMultiple";
+import SelectWithSearch from "@/components/ui/SelectWithSearch";
 import { getStationsAction } from "@/service/apiStation";
 import { useQuery } from "@tanstack/react-query";
 import {  useState } from "react";
@@ -11,7 +13,8 @@ function RouteAddEdit() {
     const params=useParams();
     const id=params.id||"new";
     const [title, setTitle] = useState<string>("");
-    const [steps, setsteps] = useState<string[]>([]);
+    const [steps, setsteps] = useState<{index:number,step:string}[]>([]);
+    const [selectedStation, setSelectedStation] = useState<null|string>(null);
     const {data:stations,error,isFetching}=useQuery({
         queryKey:["station"],
         queryFn:()=>getStationsAction(),
@@ -31,14 +34,23 @@ function RouteAddEdit() {
             <div className="flex flex-col gap-2">
 <Input parentClassName="max-w-96" label="Nom d'itinéraire" type="text" placeHolder="entrer le nom d'itinéraire" value={title} onChange={(e)=>setTitle(e.target.value)} />
   <div className="flex gap-2">
-    <SelectMultiple label="Ajouter une étape" name="steps"
-     value={steps} onValueChange={(lst)=>setsteps(lst)}
+    <SelectWithSearch label="Ajouter une étape" name="steps"
+     value={selectedStation||""} onValueChange={(sts:string)=>{
+        setSelectedStation(sts);
+        setsteps(lst=>{
+            return [...lst,{index:lst.length+1,step:sts}]
+        })
+     }}
       possibleValues={stationsString} />
-
+   
   </div>
+  <TableOfRoutes routes={steps} setRoutes={setsteps}  />
+    <Button className="mt-auto" >
+        {id==="new"?"Ajouter itinéraire":"Modifier itinéraire"}
+    </Button>
             </div>
             <div className="bg-blue-600">
-                a
+               
             </div>
             </div>
                         </Card> 
