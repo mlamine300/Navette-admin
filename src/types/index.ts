@@ -24,6 +24,20 @@ export interface Agent{
   activeStatus?:boolean;
 
 }
+export interface TimeHourMinute{
+  hour:number,
+  minute:number
+}
+export interface Step{
+  index:number;
+  step:string;
+  arrival:TimeHourMinute;
+  departure:TimeHourMinute;
+}
+export interface Route{
+  name:string;
+  steps:Step[];
+}
 //export type Agent=z.infer<typeof AgentSchema>;
 // export interface Station {
 //   id?: number;
