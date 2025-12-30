@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Spinner from "@/components/main/Spinner";
 import RouteTimeLine from "@/components/route/RouteTimeLine";
 import TableOfRoutes from "@/components/route/TableOfRoutes";
@@ -5,15 +6,19 @@ import Button from "@/components/ui/Button";
 import { Card } from "@/components/ui/card";
 import Input from "@/components/ui/Input"
 import SelectWithSearch from "@/components/ui/SelectWithSearch";
+import { addItinerary, EditItinirary,getItiniraryById } from "@/service/apiRoutes";
 import { getStationsAction } from "@/service/apiStation";
-import type { Step } from "@/types";
+import type {  Step } from "@/types";
 import { useQuery } from "@tanstack/react-query";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useParams } from "react-router";
 
 function RouteAddEdit() {
     const params=useParams();
     const id=params.id||"new";
+   
+  
     const [title, setTitle] = useState<string>("");
     const [steps, setsteps] = useState<Step[]>([]);
     const [selectedStation, setSelectedStation] = useState<null|string>(null);
@@ -21,10 +26,41 @@ function RouteAddEdit() {
         queryKey:["station"],
         queryFn:()=>getStationsAction(),
     })
+      useEffect(()=>{
+       const renderRoute=async()=>{
+        const route=await getItiniraryById(id);
+        if(route){
+            setTitle(route.name);
+            setsteps(route.steps);
+        }
+       }
+       renderRoute();
+    },[id])
     const stationsString=stations?.map(s=>s.name);
+    const addOrEditRooute=async()=>{
+       try {
+        let route=null;
+        if(id==="new"){
+ route=await addItinerary({name:title,steps});
+        }else {
+            route =await EditItinirary(id,{name:title,steps})
+        }
+         
+        if(route){
+            setsteps([]);
+            setTitle("");
+ toast.success("Itinéraire ajouté")
+        }
+           
+       } catch (error:any) {
+    console.log(error)
+        toast.error(error)
+       }
+    }
     if(isFetching)return <div className="flex justify-center items-center">
         <Spinner/>
     </div>
+    if(error)
     console.log(error)
     const addStation=(station:string)=>{
         
@@ -53,7 +89,7 @@ setsteps(lst=>{
    
   </div>
   <TableOfRoutes routes={steps} setRoutes={setsteps}  />
-    <Button className="mt-auto" >
+    <Button onClick={()=>addOrEditRooute()} className="mt-auto" >
         {id==="new"?"Ajouter itinéraire":"Modifier itinéraire"}
     </Button>
             </div>
