@@ -35,6 +35,8 @@ export interface Step{
   departure:TimeHourMinute;
 }
 export interface Route{
+  id?:string;
+  createdAt?:string;
   name:string;
   steps:Step[];
 }

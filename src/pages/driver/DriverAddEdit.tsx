@@ -1,7 +1,7 @@
 function DriverAddEdit() {
     return (
         <div>
-            AddEditDriver
+            Add Edit Driver
         </div>
     )
 }

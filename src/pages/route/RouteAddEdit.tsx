@@ -40,16 +40,19 @@ function RouteAddEdit() {
     const addOrEditRooute=async()=>{
        try {
         let route=null;
+        let message="Itinéraire ajouté";
         if(id==="new"){
  route=await addItinerary({name:title,steps});
         }else {
             route =await EditItinirary(id,{name:title,steps})
+            message="Itinéraire modifié";
         }
          
         if(route){
             setsteps([]);
             setTitle("");
- toast.success("Itinéraire ajouté")
+
+ toast.success(message)
         }
            
        } catch (error:any) {

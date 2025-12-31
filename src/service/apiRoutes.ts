@@ -52,3 +52,9 @@ export const getItiniraryById=async(id:string)=>{
     if(error)throw error;
     return data;
 }
+
+export const getRoutes=async()=>{
+    const {data:routes,error}=await supabase.from("itinerary").select("*");
+    if(error)throw error;
+    return routes;
+}
