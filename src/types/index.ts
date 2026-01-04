@@ -15,6 +15,18 @@ export const AgentSchema=z.object({
   station :z.string(),
   activeStatus:z.boolean().default(true)
 });
+export const DriverSchema=z.object({
+  
+  name:z.string().min(3,"nom de driver trop court").max(50,"nom de driver trop long"),
+  email:z.string().min(3,"email de driver trop court").max(30,"email de driver trop long"),
+  password:z.string().min(8,"email de driver trop court").max(30,"email de driver trop long").optional(),
+  rePassword:z.string().min(8,"email de driver trop court").max(30,"email de driver trop long").optional(),
+  role:z.enum(["admin","agent","driver"]).optional(),
+  itinerary :z.string(),
+  activeStatus:z.boolean().default(true)
+});
+
+export type DriverTypeSchema=z.infer<typeof DriverSchema>
 export interface Agent{
   name:string;
   id?:string;
@@ -27,6 +39,13 @@ export interface Agent{
 export interface TimeHourMinute{
   hour:number,
   minute:number
+}
+export interface Driver{
+  id?:string;
+  name:string;
+  email:string;
+  itinerary:string;
+  activeStatus?:boolean;
 }
 export interface Step{
   index:number;
